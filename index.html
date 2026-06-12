@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Portal del Alumno | USMP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --usmp-red:#B5121B; --usmp-red-2:#8F0F16; --ink:#0B1220; --muted:#667085;
+      --border:#E4E7EC; --bg:#F5F6F8; --surface:#FFFFFF; --surface-2:#FCFCFD;
+      --radius:18px; --shadow-1: 0 10px 22px rgba(16,24,40,.08); --shadow-2: 0 22px 52px rgba(16,24,40,.16);
+      --container: 1120px; --gap: 18px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; font-family: Inter, system-ui, sans-serif; color:var(--ink);
+      background: radial-gradient(1100px 520px at 14% -8%, rgba(181,18,27,.16), transparent 60%),
+                  radial-gradient(900px 520px at 92% -10%, rgba(143,15,22,.14), transparent 58%),
+                  linear-gradient(180deg, #FFFFFF 0%, var(--bg) 52%, #EEF1F5 100%);
+    }
+    .topbar{ position:sticky; top:0; z-index:20; background: rgba(255,255,255,.78); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(228,231,236,.85); }
+    .topbar__inner{ max-width: var(--container); margin: 0 auto; padding: 14px 18px; display:flex; align-items:center; justify-content: space-between; }
+    .brand{ display:flex; align-items:center; gap: 12px; }
+    .brand__logo{ height: 34px; filter: drop-shadow(0 10px 16px rgba(16,24,40,.08)); }
+    .brand__text{ display:flex; flex-direction:column; line-height:1.12; }
+    .brand__title{ font-size: 14px; font-weight: 800; letter-spacing: .2px; }
+    .brand__subtitle{ font-size: 12px; color: var(--muted); font-weight: 600; }
+    .actions{ display:flex; align-items:center; gap: 10px; }
+    .avatar{ width: 34px; height: 34px; border-radius: 999px; display:grid; place-items:center; font-weight: 900; color: #fff; background: linear-gradient(135deg, var(--usmp-red), var(--usmp-red-2)); border: 1px solid rgba(255,255,255,.28); }
+    main{ max-width: var(--container); margin: 0 auto; padding: 22px 18px 30px; }
+    .hero{ border-radius: calc(var(--radius) + 6px); padding: 22px; background: linear-gradient(135deg, var(--usmp-red), var(--usmp-red-2)); color: #fff; box-shadow: var(--shadow-2); position:relative; overflow:hidden; border: 1px solid rgba(255,255,255,.14); display:flex; justify-content:space-between; align-items:flex-start; flex-wrap: wrap; gap:18px;}
+    .hero__title{ margin:0; font-size: 18px; font-weight: 900; letter-spacing: .2px; }
+    .hero__desc{ margin: 8px 0 0; font-size: 13px; opacity:.93; max-width: 62ch; line-height: 1.45; }
+    .hero__meta{ display:flex; gap: 10px; flex-wrap: wrap; }
+    .pill{ display:inline-flex; align-items:center; gap: 8px; padding: 9px 12px; border-radius: 999px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.24); font-size: 12px; font-weight: 800; }
+    .section{ margin-top: 18px; }
+    .section__head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:16px; }
+    .section__title{ margin:0; font-size: 14px; font-weight: 900; }
+    .section__hint{ margin:0; font-size: 12px; color: var(--muted); font-weight: 600; }
+    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+    .card{ grid-column: span 3; background: linear-gradient(180deg, var(--surface), var(--surface-2)); border: 1px solid var(--border); border-radius: calc(var(--radius) + 2px); box-shadow: var(--shadow-1); padding: 16px; text-decoration:none; color: inherit; display:flex; flex-direction:column; gap: 10px; min-height: 132px; transition: all .2s ease; position:relative; overflow:hidden; }
+    .card::before{ content:""; position:absolute; left:0; top:0; height: 4px; width: 100%; background: linear-gradient(90deg, var(--usmp-red), rgba(181,18,27,.35)); }
+    .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-2); border-color: rgba(181,18,27,.22); }
+    .icon{ width: 40px; height: 40px; border-radius: 14px; background: rgba(181,18,27,.10); border: 1px solid rgba(181,18,27,.18); display:grid; place-items:center; color:var(--usmp-red); }
+    .card__title{ margin:0; font-size: 14px; font-weight: 900; }
+    .card__desc{ margin: 0; font-size: 12px; color: var(--muted); line-height: 1.4; }
+    .card__cta{ margin-top:auto; display:flex; align-items:center; justify-content:space-between; font-size: 12px; font-weight: 800; color: var(--usmp-red); }
+    .arrow{ width: 22px; height: 22px; border-radius: 999px; display:grid; place-items:center; border: 1px solid rgba(181,18,27,.25); background: rgba(181,18,27,.06); }
+    footer{ max-width: var(--container); margin: 0 auto; padding: 0 18px 22px; color: var(--muted); font-size: 12px; text-align:center; font-weight:500;}
+    @media (max-width: 900px){ .card{ grid-column: span 6; } }
+    @media (max-width: 480px){ .card{ grid-column: span 12; } .brand__subtitle{display:none;} }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <img class="brand__logo" src="https://upload.wikimedia.org/wikipedia/commons/a/af/LOGO_USMP.png" alt="USMP" />
+        <div class="brand__text">
+          <div class="brand__title">Portal del Alumno</div>
+          <div class="brand__subtitle">Universidad de San Martín de Porres</div>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="avatar" title="Juan Sebastian Ccama Mollisaca">JS</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1 class="hero__title">Bienvenido(a) al Portal del Alumno</h1>
+        <p class="hero__desc">Accede rápidamente a tus documentos, notas y estado financiero. Diseño institucional USMP.</p>
+      </div>
+      <div class="hero__meta">
+        <div class="pill">Periodo: 2026-I</div>
+        <div class="pill">Estado: Activo</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section__head">
+        <div>
+          <h2 class="section__title">Menú principal</h2>
+          <p class="section__hint">Selecciona un módulo para continuar.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="#" onclick="alert('Módulo de Constancia en construcción.')">
+          <div class="icon"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm0 2v16h10V4H7Zm2 3h6v2H9V7Z"/></svg></div>
+          <div><h3 class="card__title">Constancia de Matrícula</h3><p class="card__desc">Genera tu documento oficial.</p></div>
+          <div class="card__cta"><span>Ver documento</span><span class="arrow"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M13 5l7 7-7 7-1.4-1.4L16.2 13H4v-2h12.2l-4.6-4.6L13 5Z"/></svg></span></div>
+        </a>
+
+        <a class="card" href="ultimo_corregido_v2.html">
+          <div class="icon"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M4 19V5h2v14H4Zm4 0V9h2v10H8Zm4 0V12h2v7h-2Zm4 0V7h2v12h-2Zm4 0V4h2v15h-2Z"/></svg></div>
+          <div><h3 class="card__title">Mis Resultados</h3><p class="card__desc">Consulta notas por asignatura.</p></div>
+          <div class="card__cta"><span>Ir a notas</span><span class="arrow"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M13 5l7 7-7 7-1.4-1.4L16.2 13H4v-2h12.2l-4.6-4.6L13 5Z"/></svg></span></div>
+        </a>
+
+        <a class="card" href="pagos.html">
+          <div class="icon"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Zm2 0v2h14V6H5Zm0 4v8h14v-8H5Zm2 2h6v2H7v-2Z"/></svg></div>
+          <div><h3 class="card__title">Pagos en Línea</h3><p class="card__desc">Revisa tu estado financiero.</p></div>
+          <div class="card__cta"><span>Ver estado</span><span class="arrow"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M13 5l7 7-7 7-1.4-1.4L16.2 13H4v-2h12.2l-4.6-4.6L13 5Z"/></svg></span></div>
+        </a>
+
+        <a class="card" href="#" onclick="alert('Historial académico en construcción.')">
+          <div class="icon"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l9 5-9 5-9-5 9-5Zm0 8 7.5-4.2L12 2.8 4.5 5.8 12 10Z"/></svg></div>
+          <div><h3 class="card__title">Historial Académico</h3><p class="card__desc">Consulta tu malla curricular.</p></div>
+          <div class="card__cta"><span>Ver historial</span><span class="arrow"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M13 5l7 7-7 7-1.4-1.4L16.2 13H4v-2h12.2l-4.6-4.6L13 5Z"/></svg></span></div>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer>© 2026 Universidad de San Martín de Porres. Portal del Alumno.</footer>
+</body>
+</html>

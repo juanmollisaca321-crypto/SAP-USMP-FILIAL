@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Comprobantes | USMP</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --usmp-red:#B5121B; --usmp-red-2:#8F0F16; --ink:#0B1220; --muted:#667085; --border:#E4E7EC; --bg:#F5F6F8; --surface:#FFFFFF; --success-bg:#ECFDF3; --success-text:#027A48; --warning-bg:#FFFAEB; --warning-text:#B54708; --container:1120px; }
+*{box-sizing:border-box} body{margin:0; font-family:Inter,sans-serif; background:var(--bg); color:var(--ink); display:flex; flex-direction:column; min-height:100vh;}
+header{background:linear-gradient(90deg,var(--usmp-red),var(--usmp-red-2)); padding:22px 30px; display:flex; justify-content:space-between; align-items:center; color:#fff;}
+.logo-wrapper{background:#fff; padding:6px 10px; border-radius:8px;} .logo-wrapper img{height:30px;} .logo--usmp-transparent{height:42px;}
+.container{max-width:var(--container); margin:22px auto; background:#fff; border-radius:22px; padding:28px; border:1px solid var(--border); box-shadow:0 10px 30px rgba(0,0,0,.05); width:95%;}
+.page-header{display:flex; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:16px;}
+h2{margin:0 0 8px; font-size:22px; font-weight:800;} .sub{font-size:13.5px; color:var(--muted);}
+.filter-panel{background:#F9FAFB; border:1px solid var(--border); border-radius:14px; padding:20px; margin-bottom:24px; display:flex; gap:16px; flex-wrap:wrap;}
+.form-control{border:1px solid var(--border); border-radius:8px; padding:10px; width:200px; font-family:inherit;}
+.table-wrapper{overflow-x:auto; border:1px solid var(--border); border-radius:14px;}
+table{width:100%; border-collapse:collapse; font-size:13px; text-align:center;} th{background:#F9FAFB; padding:14px; font-size:11.5px; color:var(--muted); text-transform:uppercase;} td{padding:14px; border-bottom:1px solid var(--border);}
+.document-cell{font-weight:700;} .col-amount{text-align:right;}
+.status-pill{padding:4px 10px; border-radius:99px; font-size:11px; font-weight:700;}
+.status-pagado{background:var(--success-bg); color:var(--success-text);} .status-pendiente{background:var(--warning-bg); color:var(--warning-text);}
+.btn-pdf{display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border:1px solid var(--border); border-radius:8px; color:var(--usmp-red); text-decoration:none; font-weight:700; font-size:12px; transition:0.2s;}
+.btn-pdf:hover{background:rgba(181,18,27,.05); border-color:var(--usmp-red);}
+.btn-secondary{display:inline-block; padding:12px 24px; border:1px solid var(--border); border-radius:12px; text-decoration:none; color:var(--ink); font-weight:700; margin-top:24px;}
+footer{text-align:center; padding:20px; font-size:12px; color:var(--muted); margin-top:auto;}
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex; gap:14px; align-items:center;">
+    <div class="logo-wrapper"><img src="https://www.sap.com/dam/application/shared/logos/sap-logo.png" alt="SAP"></div>
+    <strong>Portal del Alumno</strong>
+  </div>
+  <img class="logo--usmp-transparent" src="ESCUDOS.png" alt="USMP">
+</header>
+<div class="container">
+  <div class="page-header">
+    <div><h2>Comprobantes Electrónicos</h2><div class="sub">JUAN SEBASTIAN CCAMA | ID: 60765142</div></div>
+  </div>
+  <div class="filter-panel">
+    <select class="form-control"><option>Año: TODOS</option></select>
+    <select class="form-control"><option>Mes: TODOS</option></select>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Documento</th><th>Concepto</th><th>Importe</th><th>Saldo</th><th>Emisión</th><th>Estado</th><th>Periodo</th><th>Acción</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="document-cell">B007-402634</td><td>Pensión Cuota 4</td><td class="col-amount">1,806.10</td><td class="col-amount" style="color: var(--muted);">0.00</td><td>28.05.2026</td>
+          <td><span class="status-pill status-pagado">Cancelado</span></td><td>26S1</td>
+          <td><a href="RUC 20138149022 BOLETA DE VENTA ELECTRÓNICA B007 (9).pdf" target="_blank" class="btn-pdf">PDF</a></td>
+        </tr>
+        <tr>
+          <td class="document-cell">B007-402633</td><td>Pensión Cuota 3</td><td class="col-amount">1,806.10</td><td class="col-amount" style="color: var(--muted);">0.00</td><td>29.04.2026</td>
+          <td><span class="status-pill status-pagado">Cancelado</span></td><td>26S1</td>
+          <td><a href="RUC 20138149022 BOLETA DE VENTA ELECTRÓNICA B007 (8).pdf" target="_blank" class="btn-pdf">PDF</a></td>
+        </tr>
+        <tr>
+          <td class="document-cell">B007-402632</td><td>Pensión Cuota 2</td><td class="col-amount">1,806.10</td><td class="col-amount" style="color: var(--muted);">0.00</td><td>30.03.2026</td>
+          <td><span class="status-pill status-pagado">Cancelado</span></td><td>26S1</td>
+          <td><a href="RUC 20138149022 BOLETA DE VENTA ELECTRÓNICA B007 (7).pdf" target="_blank" class="btn-pdf">PDF</a></td>
+        </tr>
+        <tr>
+          <td class="document-cell">B007-402631</td><td>Pensión Cuota 1</td><td class="col-amount">1,806.10</td><td class="col-amount" style="color: var(--muted);">0.00</td><td>27.02.2026</td>
+          <td><span class="status-pill status-pagado">Cancelado</span></td><td>26S1</td>
+          <td><a href="RUC 20138149022 BOLETA DE VENTA ELECTRÓNICA B007 (6).pdf" target="_blank" class="btn-pdf">PDF</a></td>
+        </tr>
+        <tr>
+          <td class="document-cell">B007-403524</td><td>Pensión Cuota 5</td><td class="col-amount">1,940.40</td><td class="col-amount" style="color: var(--muted);">0.00</td><td>27.11.2025</td>
+          <td><span class="status-pill status-pagado">Cancelado</span></td><td>25S2</td>
+          <td><a href="RUC 20138149022 BOLETA DE VENTA ELECTRÓNICA B007 (5).pdf" target="_blank" class="btn-pdf">PDF</a></td>
+        </tr>
+        <tr>
+          <td class="document-cell">B007-403523</td><td>Pensión Cuota 4</td><td class="col-amount">1,940.40</td><td class="col-amount" style="color: var(--muted);">0.00</td><td>30.10.2025</td>
+          <td><span class="status-pill status-pagado">Cancelado</span></td><td>25S2</td>
+          <td><a href="RUC 20138149022 BOLETA DE VENTA ELECTRÓNICA B007 (4).pdf" target="_blank" class="btn-pdf">PDF</a></td>
+        </tr>
+        <tr>
+          <td class="document-cell">B007-403522</td><td>Pensión Cuota 3</td><td class="col-amount">1,940.40</td><td class="col-amount" style="color: var(--muted);">0.00</td><td>29.09.2025</td>
+          <td><span class="status-pill status-pagado">Cancelado</span></td><td>25S2</td>
+          <td><a href="RUC 20138149022 BOLETA DE VENTA ELECTRÓNICA B007 (3).pdf" target="_blank" class="btn-pdf">PDF</a></td>
+        </tr>
+        <tr>
+          <td class="document-cell">B007-403521</td><td>Pensión Cuota 2</td><td class="col-amount">1,940.40</td><td class="col-amount" style="color: var(--muted);">0.00</td><td>28.08.2025</td>
+          <td><span class="status-pill status-pagado">Cancelado</span></td><td>25S2</td>
+          <td><a href="RUC 20138149022 BOLETA DE VENTA ELECTRÓNICA B007 (2).pdf" target="_blank" class="btn-pdf">PDF</a></td>
+        </tr>
+        <tr>
+          <td class="document-cell">B007-403520</td><td>Pensión Cuota 1</td><td class="col-amount">1,940.40</td><td class="col-amount" style="color: var(--muted);">0.00</td><td>31.07.2025</td>
+          <td><span class="status-pill status-pagado">Cancelado</span></td><td>25S2</td>
+          <td><a href="RUC 20138149022 BOLETA DE VENTA ELECTRÓNICA B007 (1).pdf" target="_blank" class="btn-pdf">PDF</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <a href="pagos.html" class="btn-secondary">Volver a Pagos</a>
+</div>
+<footer>© 2026 Universidad de San Martín de Porres.</footer>
+</body>
+</html>

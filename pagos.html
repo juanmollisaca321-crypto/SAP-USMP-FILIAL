@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagos | USMP</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --usmp-red:#B5121B; --usmp-red-2:#8F0F16; --ink:#0B1220; --muted:#667085; --border:#E4E7EC; --bg:#F5F6F8; --surface:#FFFFFF; --container:1120px; }
+*{box-sizing:border-box} body{margin:0; font-family:Inter,sans-serif; background:var(--bg); color:var(--ink); display:flex; flex-direction:column; min-height:100vh;}
+header{background:linear-gradient(90deg,var(--usmp-red),var(--usmp-red-2)); padding:22px 30px; display:flex; justify-content:space-between; align-items:center; color:#fff;}
+.logo-wrapper{background:#fff; padding:6px 10px; border-radius:8px;} .logo-wrapper img{height:30px;} .logo--usmp-transparent{height:42px;}
+.container{max-width:var(--container); margin:22px auto; background:#fff; border-radius:22px; padding:28px; border:1px solid var(--border); box-shadow:0 10px 30px rgba(0,0,0,.05); width:95%;}
+.page-header{display:flex; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:16px; border-bottom:1px solid var(--border); padding-bottom:20px;}
+h2{margin:0 0 8px; font-size:22px; font-weight:800;} .sub{font-size:13.5px; color:var(--muted);}
+.student-badge{display:flex; align-items:center; gap:12px; border:1px solid var(--border); padding:8px 16px 8px 8px; border-radius:99px;}
+.student-avatar{width:36px; height:36px; border-radius:50%; background:var(--usmp-red); color:#fff; display:grid; place-items:center; font-weight:800;}
+.student-name{font-size:13px; font-weight:700;} .student-id{font-size:11.5px; color:var(--muted); display:block;}
+.toolbar{display:flex; justify-content:space-between; margin-bottom:16px;} .badge-count{background:#FFFAEB; color:#B54708; padding:2px 8px; border-radius:12px; font-size:12px;}
+.table-wrapper{overflow-x:auto; border:1px solid var(--border); border-radius:14px; margin-bottom:24px;}
+table{width:100%; border-collapse:collapse; font-size:13px;} th{background:#F9FAFB; padding:14px; text-align:left; font-size:11.5px; color:var(--muted);} td{padding:14px; border-bottom:1px solid var(--border);}
+.empty-state{text-align:center; padding:32px; color:var(--muted); font-style:italic;}
+.actions-footer{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:12px; font-weight:700; text-decoration:none; font-size:14px;}
+.btn-secondary{border:1px solid var(--border); color:var(--ink);} .btn-primary{background:var(--usmp-red); color:#fff;}
+footer{text-align:center; padding:20px; font-size:12px; color:var(--muted); margin-top:auto;}
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex; gap:14px; align-items:center;">
+    <div class="logo-wrapper"><img src="https://www.sap.com/dam/application/shared/logos/sap-logo.png" alt="SAP"></div>
+    <strong>Pago en Línea</strong>
+  </div>
+  <img class="logo--usmp-transparent" src="ESCUDOS.png" alt="USMP">
+</header>
+<div class="container">
+  <div class="page-header">
+    <div><h2>Estado de Cuenta</h2><div class="sub">Código ID: <strong>60765142</strong></div></div>
+    <div class="student-badge"><div class="student-avatar">JS</div><div><span class="student-name">JUAN SEBASTIAN CCAMA</span><span class="student-id">Alumno Regular</span></div></div>
+  </div>
+  <div class="toolbar"><strong>Recibos Pendientes <span class="badge-count">0</span></strong></div>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Período</th><th>Descripción</th><th>Monto Total</th><th>Vencimiento</th></tr></thead>
+      <tbody><tr><td colspan="4" class="empty-state">No tienes recibos pendientes.</td></tr></tbody>
+    </table>
+  </div>
+  <div class="actions-footer">
+    <a href="index.html" class="btn btn-secondary">Volver al Menú</a>
+    <a href="comprobantes.html" class="btn btn-primary">Consulta de Comprobantes Electrónicos</a>
+  </div>
+</div>
+<footer>© 2026 Universidad de San Martín de Porres.</footer>
+</body>
+</html>
