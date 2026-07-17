@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Histórico de Notas - Plan de Estudios</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --usmp-red:#B5121B;
+  --usmp-red-2:#8F0F16;
+
+  --ink:#0B1220;
+  --muted:#667085;
+  --border:#E4E7EC;
+  --bg:#F5F6F8;
+  --surface:#FFFFFF;
+  --surface-2:#FCFCFD;
+
+  --radius:18px;
+  --shadow-1: 0 10px 22px rgba(16,24,40,.08);
+  --shadow-2: 0 22px 52px rgba(16,24,40,.16);
+
+  --container:1120px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 12% -10%, rgba(181,18,27,.12), transparent 55%),
+    radial-gradient(900px 520px at 95% 0%, rgba(143,15,22,.10), transparent 60%),
+    linear-gradient(180deg, #FFFFFF 0%, var(--bg) 60%, #EEF1F5 100%);
+}
+
+/* Accesibilidad */
+:focus-visible{outline: 3px solid rgba(181,18,27,.35); outline-offset: 3px; border-radius: 12px;}
+
+@media (prefers-reduced-motion: reduce){
+  *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+}
+
+.app{min-height:100vh; display:grid; grid-template-columns:1fr;}
+.sidebar{display:none}
+
+.main{min-height:100vh; display:flex; flex-direction:column; padding:0 0 26px;}
+
+/* TOP HEADER */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background: linear-gradient(90deg, var(--usmp-red) 0%, var(--usmp-red-2) 55%, #6f0a10 100%);
+  color:#fff;
+  padding:14px 18px;
+  box-shadow: 0 14px 30px rgba(16,24,40,.22);
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.topbar::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(900px 240px at 0% 0%, rgba(255,255,255,.20), transparent 60%),
+    radial-gradient(600px 200px at 100% 0%, rgba(255,255,255,.12), transparent 55%);
+  pointer-events:none;
+}
+
+.topbar-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-width:0;
+  position:relative;
+  z-index:1;
+}
+
+.topbar-logos{display:flex; align-items:center; gap:10px; flex:0 0 auto;}
+.topbar-logos img{height:30px; width:auto; display:block;}
+
+.logo-box{
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(255,255,255,.40);
+  border-radius:12px;
+  padding:6px 10px;
+  display:flex;
+  align-items:center;
+  box-shadow: 0 10px 18px rgba(0,0,0,.14);
+}
+
+.topbar-title{
+  font-weight:800;
+  letter-spacing:.2px;
+  font-size:14px;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* PANELS */
+.section-header,
+.info{
+  width:min(var(--container), calc(100% - 36px));
+  margin:18px auto 0;
+  background: var(--surface);
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+}
+
+.section-header{padding:18px 20px;}
+.section-header h2{
+  margin:0;
+  font-size:15px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  letter-spacing:.2px;
+}
+.section-header .icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  background: rgba(181,18,27,.10);
+  border: 1px solid rgba(181,18,27,.18);
+  color: var(--usmp-red);
+  font-weight:900;
+}
+
+.info{margin-top:14px; padding:20px;}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:12px 22px;
+  font-size:13px;
+}
+.label{color:var(--muted); font-weight:600;}
+.value{font-weight:800; color:var(--ink);}
+
+/* FOOTER BAR */
+.footer{
+  width:min(var(--container), calc(100% - 36px));
+  margin:16px auto 0;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.footer a{
+  background: linear-gradient(180deg, var(--usmp-red), var(--usmp-red-2));
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.2px;
+  box-shadow: 0 14px 26px rgba(181,18,27,.22);
+  border: 1px solid rgba(255,255,255,.22);
+  text-decoration:none;
+  transition: transform .14s ease, filter .14s ease, box-shadow .14s ease;
+}
+
+.footer a:hover{filter: brightness(.96); transform: translateY(-1px); box-shadow: 0 18px 34px rgba(181,18,27,.26);}
+.footer a:active{transform: translateY(0);}
+
+@media (max-width: 640px){
+  .main{padding:0 0 20px}
+  .section-header,.info,.footer{width:calc(100% - 24px)}
+  .topbar{padding:12px 14px}
+  .topbar-title{font-size:13px}
+  .info-grid{grid-template-columns:1fr}
+  .label{font-size:12px}
+  .value{margin-top:-8px}
+  .logo-box{padding:5px 8px; border-radius:10px}
+  .topbar-logos img{height:26px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+<!-- MAIN CONTENT -->
+  <div class="main">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-logos" aria-hidden="true">
+          <div class="logo-box">
+            <img src="https://www.sap.com/dam/application/shared/logos/sap-logo.png" alt="SAP">
+          </div>
+          <div class="logo-box">
+            <img src="https://usmp.edu.pe/wp-content/uploads/2022/06/usmp-banner-logojpg-2.jpg" alt="USMP">
+          </div>
+        </div>
+
+        <div class="topbar-title">Obtener Histórico de Notas para Plan de Estudios</div>
+      </div>
+    </div>
+
+    <!-- SECTION HEADER -->
+    <div class="section-header">
+      <h2>
+        <span class="icon">⟲</span>
+        MEDICINA HUMANA (PREGRADO vs 06)
+      </h2>
+    </div>
+
+    <!-- INFO -->
+    <div class="info">
+      <div class="info-grid">
+        <div class="label">Nro. Matrícula:</div>
+        <div class="value">60765142</div>
+
+        <div class="label">Plan:</div>
+        <div class="value">MEDICINA HUMANA (PREGRADO vs 06)</div>
+
+        <div class="label">Escuela:</div>
+        <div class="value">Esc. Medicina Humana Arequipa</div>
+
+        <div class="label">Facultad:</div>
+        <div class="value">Filial Arequipa</div>
+
+        <div class="label">Sede:</div>
+        <div class="value">SEDE AREQUIPA</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <a href="record_notas_USMP_mejorado.pdf" target="_blank" rel="noopener">Documento Avance</a>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
